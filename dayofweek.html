@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Current Day Of the Week</title>
+<script>
+function checkdata()
+{
+var n,currentday;
+n=Number(document.frmcheck.txtday.value);
+switch (n){
+case 1:currentday="today is Sunday"
+       break;
+case 2:currentday="today is Monday"
+       break;
+case 3:currentday="today is Tuesday"
+       break;
+case 4:currentday="today is Wednesday"
+       break;
+case 5:currentday="today is Thursday"
+       break;
+case 6:currentday="today is Friday"
+       break;
+case 7:currentday="today is Saturday"
+       break;
+default:currentday="invalid";
+}
+alert(currentday);
+}
+</script>
+</head>
+<body>
+<h2>DAY OF THE WEEK</h2>
+<form name="frmcheck">
+Enter a number
+<input type="text" name="txtday"><br><br>
+<button type="submit" onclick="checkdata()">find</button>
+</form>
+</body>
+</html>

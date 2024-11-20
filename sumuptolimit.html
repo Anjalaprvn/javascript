@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sum of Numbers</title>
+</head>
+<body>
+<h1>Sum of Numbers Up to a Given Number</h1>
+<input type="number" id="a" placeholder="Enter a number"><br><br>
+<button onclick="calculateSum()">Calculate</button>
+<div id="result"></div>
+<script>
+function calculateSum()  
+{
+n = parseInt(document.getElementById('a').value);
+if (n<= 0)
+{
+document.getElementById('result').textContent = "Please enter a positive nteger.";
+return; 
+}
+sum = (n * (n + 1)) / 2;
+alert(sum)
+}
+</script>
+</body>
+</html>

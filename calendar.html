@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+    <title>Simple Calendar</title>
+</head>
+<body>
+    <h1>Generate Calendar for a Year</h1>
+    <label for="year">Enter Year: </label>
+    <input type="number" id="year" placeholder="Enter year" />
+    <button onclick="generateCalendar()">Generate Calendar</button>
+
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            year = document.getElementById('year').value;
+            if (!year) {
+                alert("Please enter a valid year!");
+                return;
+            }
+
+            calendarContainer = document.getElementById("calendar");
+            calendarContainer.innerHTML= ''; 
+            monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+             'July', 'August', 'September', 'October', 'November', 'December'];
+
+            for (let month = 0; month < 12; month++) {
+             monthDiv = document.createElement('div');
+             monthDiv.innerHTML = `<h2>${monthNames[month]} ${year}</h2>`;
+                
+                table = document.createElement("table");
+                daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+                          headerRow = document.createElement('tr');
+                daysOfWeek.forEach(day => {
+                     th = document.createElement('th');
+                    th.innerText = day;
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
+
+                                daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                               firstDay = new Date(year, month, 1).getDay();
+
+                let currentDay = 1;
+                let row = document.createElement('tr');
+
+                for (let i = 0; i < firstDay; i++) {
+                    emptyCell = document.createElement('td');
+                    row.appendChild(emptyCell);
+                }
+
+                                while (currentDay <= daysInMonth) {
+                    cell = document.createElement('td');
+                    cell.innerText = currentDay;
+
+                                        const today = new Date();
+                    if (today.getDate() === currentDay && today.getMonth() === month && today.getFullYear() === parseInt(year)) {
+                        cell.style.backgroundColor = 'yellow';
+                    }
+
+                    row.appendChild(cell);
+
+                                       if (row.children.length === 7) {
+                        table.appendChild(row);
+                        row = document.createElement('tr');
+                    }
+
+                    currentDay++;
+                }
+
+                               if (row.children.length > 0) {
+                    while (row.children.length < 7) {
+                        <emptyCell = document.createElement('td');
+                        row.appendChild(emptyCell);
+                    }
+                    table.appendChild(row);
+                }
+
+                monthDiv.appendChild(table);
+                calendarContainer.appendChild(monthDiv);
+            }
+        }
+    </script>
+</body>
+</html>
